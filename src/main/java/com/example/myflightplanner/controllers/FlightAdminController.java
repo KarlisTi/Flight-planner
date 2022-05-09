@@ -24,9 +24,6 @@ public class FlightAdminController {
     @PutMapping(value = "/flights")
     @ResponseStatus(HttpStatus.CREATED)
     public Flight addFlight(@Valid @RequestBody AddFlightRequest flightRequest) {
-         if (flightRequest.isInvalidRequest()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
         return flightService.addFlight(flightRequest);
     }
 
