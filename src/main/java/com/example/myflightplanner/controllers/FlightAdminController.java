@@ -24,12 +24,10 @@ public class FlightAdminController {
     @PutMapping(value = "/flights")
     @ResponseStatus(HttpStatus.CREATED)
     public Flight addFlight(@Valid @RequestBody AddFlightRequest flightRequest) {
-        Flight newFlight = flightRequest.flightObject(flightService.getNewId());
-        if (flightRequest.isValidRequest(flightRequest)) {
+         if (flightRequest.isInvalidRequest()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        flightService.addFlight(newFlight);
-        return newFlight;
+        return flightService.addFlight(flightRequest);
     }
 
     @GetMapping(value = "/flights/{id}")
