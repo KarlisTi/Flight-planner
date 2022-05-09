@@ -17,8 +17,13 @@ public class FlightService {
         this.flightRepository = flightRepository;
     }
 
-    public void addFlight(Flight flight) {
-        flightRepository.addFlight(flight);
+    public Flight addFlight(AddFlightRequest flightRequest) {
+      if (flightRequest.isInvalidRequest()) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+      Flight newFlight = flightRequest.flightObject(getNewId());
+        flightRepository.addFlight(newFlight);
+        return newFlight;
     }
 
     public Flight getFlight(Long id) {
