@@ -94,11 +94,4 @@ public class FlightRepository {
                 .findFirst()
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
-
-    @Override
-    public String toString() {
-        return "FlightRepository{" +
-                "flightList=" + flightList +
-                '}';
-    }
 }
