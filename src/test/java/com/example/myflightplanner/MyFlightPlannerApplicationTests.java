@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MyFlightPlannerApplicationTests {
 
     @Test
-    void contextLoads() {
+    void Autowired() {
+        
     }
 
 }
